@@ -11,16 +11,19 @@
             </div>
         </header>
 
-        <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+        <div class="row " style="display:flex; flex-wrap:wrap;">
             <% campgrounds.forEach(e => { %>
                 <div class="col-md-3 col-sm-6">
-                    <div class=" card">
-                        <img src="<%= e.image %> " alt="" class="img-thumbnail">
-                        <div class="caption card-body">
-                            <h4>
+                    <div class=" img-thumbnail text-center">
+                        <img style="height:375px ; width: 255px;" src="<%= e.image %> " alt="" class="img-fluid">
+                        <div class="card-body" style="padding: 10px;">
+                            <h4 style="font-size: 1.5em;">
                                 <%= e.name %>
                             </h4>
                         </div>
+                        <p>
+                            <a class="btn btn-info" href="/campgrounds/<%= e._id %> ">More Info</a>
+                        </p>
                     </div>
                 </div>
                 <% });  %>

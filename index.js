@@ -1,47 +1,78 @@
-var bodyParser = require('body-parser')
-var express = require('express')
-var app = express();
-let port = 3000;
+var bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    express = require('express'),
+    app = express(),
+    port = 3000;
+
+mongoose.connect('mongodb://localhost:27017/yelp', { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
-var campgrounds = [
-    { name: "Salmon creek", image: "https://images.unsplash.com/photo-1537905569824-f89f14cceb68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Granite Hill", image: "https://images.unsplash.com/photo-1529260294141-4e30f9287ec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Mountain Goat's Rest", image: "https://images.unsplash.com/photo-1536002583490-9857862b246b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Salmon creek", image: "https://images.unsplash.com/photo-1537905569824-f89f14cceb68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Granite Hill", image: "https://images.unsplash.com/photo-1529260294141-4e30f9287ec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Mountain Goat's Rest", image: "https://images.unsplash.com/photo-1536002583490-9857862b246b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Salmon creek", image: "https://images.unsplash.com/photo-1537905569824-f89f14cceb68?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Granite Hill", image: "https://images.unsplash.com/photo-1529260294141-4e30f9287ec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" },
-    { name: "Mountain Goat's Rest", image: "https://images.unsplash.com/photo-1536002583490-9857862b246b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" }
+//SCHEMA SETUP  
+var campgroundSchema = mongoose.Schema({
+    name: String,
+    image: String,
+    description: String
+});
 
-]
+var Campground = new mongoose.model("Campground", campgroundSchema);
+
 
 app.get('/', (req, res) => {
     res.render("landing");
 });
 
+//SHOW ALL CAMPGROUNDS
 app.get('/campgrounds', (req, res) => {
+    Campground.find({}, (err, campgrounds) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.render("index", { campgrounds: campgrounds });
+        }
+    })
 
-    res.render("campgrounds", { campgrounds: campgrounds });
 });
 
+//ADD NEW CAMPGROUNDS TO DATABASE
 app.post('/campgrounds', (req, res) => {
     //get data from form and add to the campgrounds get request and redirect to the campgrounds
     var name = req.body.name;
     var image = req.body.image;
-    var newCampground = { name: name, image: image }
-    campgrounds.push(newCampground);
-    res.redirect('/campgrounds');
+    var description = req.body.description;
+    var newCampground = { name: name, image: image, description: description }
+    Campground.create(newCampground, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(`added a new Campground via form`);
+            console.log(result);
+            res.redirect('/campgrounds');
+        }
+    })
 
 });
 
+//DISPLAY A FORM TO CREATE A NEW CAMPGROUND
 app.get('/campgrounds/new', (req, res) => {
     res.render('new.ejs')
 });
-console.log("hello")
+
+//SHOW - show more info about one campground
+app.get('/campgrounds/:id', (req, res) => {
+    //find the campground with the specified id in the params
+    //render show template with that compound
+    Campground.findById(req.params.id, (err, foundCampground) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(foundCampground);
+            res.render("show", { campground: foundCampground });
+        }
+    })
+
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
