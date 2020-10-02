@@ -41,7 +41,6 @@ app.post('/campgrounds', (req, res) => {
 app.get('/campgrounds/new', (req, res) => {
     res.render('new.ejs')
 });
-console.log('hello')
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`)
