@@ -15,13 +15,13 @@
             <% campgrounds.forEach(e => { %>
                 <div class="col-md-3 col-sm-6">
                     <div class=" img-thumbnail text-center">
-                        <img style="height:375px ; width: 255px;" src="<%= e.image %> " alt="" class="img-fluid">
+                        <img src="<%= e.image %> " alt="" class="img-fluid img-thumbnail">
                         <div class="card-body" style="padding: 10px;">
                             <h4 style="font-size: 1.5em;">
                                 <%= e.name %>
                             </h4>
                         </div>
-                        <p>
+                        <p id="desc_para">
                             <a class="btn btn-info" href="/campgrounds/<%= e._id %> ">More Info</a>
                         </p>
                     </div>
