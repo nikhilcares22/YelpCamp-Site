@@ -1,29 +1,65 @@
 <%- include ('../partials/header') %>
-    <div class="container">
-        <strong>    <h1><%= campground.name %></h1></strong>
-        <img src="<%= campground.image %> " style="width: 300px; ;height:375px ;" alt="">
+    <div class="container mt-1">
+        <div class="row">
+            <div class="col-md-3">
+                <p class="lead">Yelp Camp</p>
+                <div class="list-group">
+                    <li class=" active list-group-item">
+                        Info 1
+                    </li>
+                    <li class="list-group-item">
+                        Info 2
+                    </li>
+                    <li class="list-group-item">
+                        Info 3
+                    </li>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="img-thumbnail card">
+                    <div class="image" id="show_image">
+                        <img class="img-fluid  " src="<%= campground.image %> " alt="">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="float-right">$9.00/night </h4>
+                        <h4 class=" float-left">
+                            <a href="# ">
+                                <%= campground.name %>
+                            </a>
+                        </h4>
+                    </div>
+                    <p class="text-lg-left"><small>
+                        <%= campground.description %>                
+                    </small>
+                    </p>
+                </div>
+
+                <div class="card mt-2 card-body bg-light">
+                    <div class="text-right">
+                        <a class="btn btn-success" href="/campgrounds/<%=campground._id %>/comments/new">
+                            Add new comment
+                            </a>
+                    </div>
+                    <hr style="height:1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));border : 0;">
 
 
-        <p>
-            <%= campground.description %>
-        </p>
+                    <% campground.comments.forEach((comment)=>{ %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <small><strong><%=comment.author%></strong></small>
+                                <small><span class="float-right text-muted">10 days ago </span></small>
+                                <p class="text-muted">
+                                    <small><%= comment.text %></small>
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="mt-0">
+                        <% }) %>
+                            <span class="mr-auto"> <a class="btn  btn-outline-primary btn-sm " href="/campgrounds ">Back</a></span>
+                </div>
 
-        <p>
-            <a class="btn btn-success" href="/campgrounds/<%=campground._id %>/comments/new">
-            Add new comment
-            </a>
-            <a class="btn btn-outline-secondary" href="/campgrounds">Back</a>
-        </p>
-
-        <% campground.comments.forEach((comment)=>{ %>
-            <p>
-                <strong>
-                    <%=comment.author%>:
-                </strong>
-                <%= comment.text %>
-
-            </p>
-            <% }) %>
+            </div>
+        </div>
 
     </div>
 
