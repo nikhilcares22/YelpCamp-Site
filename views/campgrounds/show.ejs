@@ -35,11 +35,14 @@
                     <div class="ml-auto ">
                         <small class="m-1 p-1"><em> Submitted By:<%= campground.author.username %></em></small>
                     </div>
+                    <div class="mr-auto ">
+                        <a class="btn btn-outline-secondary btn-sm ml-1 mb-1" href="/campgrounds/<%= campground._id %>/edit ">Edit Campground</a>
+                    </div>
                 </div>
 
                 <div class="card mt-2 card-body bg-light">
                     <div class="text-right">
-                        <a class="btn btn-success" href="/campgrounds/<%=campground._id %>/comments/new">
+                        <a class="btn btn-success " href="/campgrounds/<%=campground._id %>/comments/new">
                             Add new comment
                             </a>
                     </div>
@@ -58,7 +61,7 @@
                         </div>
                         <hr class="mt-0">
                         <% }) %>
-                            <span class="mr-auto"> <a class="btn  btn-outline-primary btn-sm " href="/campgrounds ">Back</a></span>
+                            <span class="mr-auto"> <a class="btn  btn-outline-info btn-sm " href="/campgrounds ">Back</a></span>
                 </div>
 
             </div>
