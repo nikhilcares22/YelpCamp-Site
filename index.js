@@ -9,7 +9,7 @@ var bodyParser = require('body-parser'),
     User = require('./models/user'),
     seedDB = require('./seeds');
 
-seedDB();
+// seedDB(); //seed the database 
 
 //requiring routes
 var commentRoutes = require('./routes/comments'),

@@ -18,18 +18,22 @@ Campground = require('../models/campground'),
 
 
 //ADD NEW CAMPGROUNDS TO DATABASE
-router.post('/', (req, res) => {
+router.post('/', isLoggedIn, (req, res) => {
     //get data from form and add to the campgrounds get request and redirect to the campgrounds
     var name = req.body.name;
     var image = req.body.image;
     var description = req.body.description;
-    var newCampground = { name: name, image: image, description: description }
+    var author = {
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newCampground = { name: name, image: image, description: description, author: author }
     Campground.create(newCampground, (err, result) => {
         if (err) {
             console.log(err);
         } else {
-            console.log(`added a new Campground via form`);
-            console.log(result);
+            // console.log(`added a new Campground via form`);
+            // console.log(result);
             res.redirect('/campgrounds');
         }
     })
@@ -37,7 +41,7 @@ router.post('/', (req, res) => {
 });
 
 //DISPLAY A FORM TO CREATE A NEW CAMPGROUND
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('campgrounds/new.ejs')
 });
 
@@ -56,5 +60,16 @@ router.get('/:id', (req, res) => {
         })
 
 });
+
+//middleware
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect("/login")
+    }
+
+}
+
 
 module.exports = router;
