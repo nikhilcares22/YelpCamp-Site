@@ -60,14 +60,21 @@
                             <div class="col-md-12">
                                 <small><strong><%=comment.author.username%></strong></small>
                                 <small><span class="float-right text-muted">10 days ago </span></small>
-                                <p class="text-muted">
+                                <p class="text-muted mb-1">
                                     <small><%= comment.text %></small>
                                 </p>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                    <a href="/campgrounds/<%=campground._id %>/comments/<%= comment._id %>/edit" class="edit_comment btn btn-sm btn-outline-warning mb-1">Edit
+                                </a>
+                                    <form class="d-inline" method="POST" action="/campgrounds/<%=campground._id %>/comments/<%= comment._id %>?_method=DELETE">
+                                        <button class="edit_comment btn btn-outline-danger mb-1">Delete</button>
+                                    </form>
+                                    <% } %>
                             </div>
                         </div>
                         <hr class="mt-0">
                         <% }) %>
-                            <span class="mr-auto"> <a class="btn  btn-outline-info btn-sm " href="/campgrounds ">Back</a></span>
+                            <span class="mr-auto"> <a class="btn btn-outline-info btn-sm " href="/campgrounds ">Back</a></span>
                 </div>
 
             </div>

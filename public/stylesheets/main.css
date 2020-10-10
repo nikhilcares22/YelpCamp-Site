@@ -19,3 +19,14 @@
 #edit_btn {
     color: white;
 }
+
+.edit_comment {
+    padding: .15rem .3rem;
+    font-size: .850rem;
+    line-height: 1.2;
+    border-radius: .3rem;
+}
+
+.edit_comment:hover {
+    color: black;
+}
