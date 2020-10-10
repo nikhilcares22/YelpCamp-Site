@@ -35,9 +35,15 @@
                     <div class="ml-auto ">
                         <small class="m-1 p-1"><em> Submitted By:<%= campground.author.username %></em></small>
                     </div>
-                    <div class="mr-auto ">
-                        <a class="btn btn-outline-secondary btn-sm ml-1 mb-1" href="/campgrounds/<%= campground._id %>/edit ">Edit Campground</a>
-                    </div>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                        <div class="d-flex">
+                            <a class=" btn btn-warning btn-sm m-1" id="edit_btn" href="/campgrounds/<%= campground._id %>/edit ">Edit</a>
+                            <form class="m-1  " action="/campgrounds/<%= campground._id%>?_method=Delete" method="POST">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                        <% } %>
+
                 </div>
 
                 <div class="card mt-2 card-body bg-light">
