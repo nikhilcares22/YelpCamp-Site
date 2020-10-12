@@ -1,19 +1,20 @@
 <%- include ('./partials/header') %>
 
-    <div class="jumbotron">
+    <div class="jumbotron login_signup">
 
-        <h1 class="text-center">Sign Up</h1>
+        <h1 class="text-center">Sign Up here</h1>
+        <div class="container common_form">
+            <form class="" action="/register" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                </div>
+                <button class="btn btn-primary" type="submit">Sign up</button>
+                <a href="/campgrounds" class="btn btn-outline-secondary">Back</a>
+            </form>
+        </div>
     </div>
-    <div class="container">
-        <form class="" action="/register" method="POST">
-            <div class="form-group">
-                <input class="form-control" type="text" name="username" placeholder="username">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="password">
-            </div>
-            <button class="btn btn-primary" type="submit">Sign up</button>
-            <a href="/campgrounds" class="btn btn-outline-secondary">Back</a>
-        </form>
-    </div>
+
     <%- include ('./partials/footer') %>
