@@ -45,3 +45,10 @@ html {
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
+@media only screen and (max-width: 600px) {
+    .common_form {
+        margin: 40px auto;
+        width: 100%;
+    }
+}
