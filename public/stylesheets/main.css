@@ -46,9 +46,58 @@ html {
     padding-bottom: 0;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .common_form {
         margin: 40px auto;
         width: 100%;
+    }
+    .common_form .btn {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+    .common_form #login_div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .common_form #login_btn {
+        display: inline;
+        width: 48%;
+    }
+    .common_form #back_btn {
+        margin-left: 17px;
+        display: inline;
+        width: 48%;
+    }
+    .common_form #login_div {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .common_form #signup_div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .common_form #signup_btn {
+        display: inline;
+        width: 48%;
+    }
+    .common_form #signup_back_btn {
+        margin-left: 17px;
+        display: inline;
+        width: 48%;
+    }
+    .common_form #signup_div {
+        display: flex;
+        flex-direction: row;
     }
 }
