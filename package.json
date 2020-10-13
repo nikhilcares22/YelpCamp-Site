@@ -4,11 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-<<<<<<< HEAD
         "master": "nodemon index.js",
-=======
-        "dev": "nodemon index.js",
->>>>>>> dev
         "start": "node index.js"
     },
     "author": "nikhil",
