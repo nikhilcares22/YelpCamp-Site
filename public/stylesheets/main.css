@@ -76,6 +76,10 @@ html {
         display: flex;
         flex-direction: row;
     }
+    .common_form input {
+        height: 3.5rem;
+        line-height: 2;
+    }
 }
 
 @media only screen and (max-width: 800px) {
