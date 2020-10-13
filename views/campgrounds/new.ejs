@@ -2,12 +2,14 @@
     <h1 style="text-align: center;">Create a new campground</h1>
     <div class="container">
         <div class="row">
-            <div style="margin: 40px auto; width: 30%;">
+            <div class="common_form">
                 <form action="/campgrounds" method="POST">
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Name" name="name">
                     </div>
-
+                    <div class="form-group">
+                        <input class="form-control" type="number" placeholder="price" name="price" min="0.01" step="0.01">
+                    </div>
                     <div class="form-group">
                         <input class="form-control" type="text" placeholder="Image URL" name="image">
                     </div>

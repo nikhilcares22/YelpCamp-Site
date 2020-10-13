@@ -3,6 +3,7 @@ var bodyParser = require('body-parser'),
     express = require('express'),
     app = express(),
     passport = require('passport'),
+    flash = require('connect-flash'),
     methodOverride = require('method-override'),
     LocalStrategy = require("passport-local"),
     port = 3000,
@@ -36,8 +37,11 @@ app.set('view engine', 'ejs');
 
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method'));
+app.use(flash());
 app.use(function(req, res, next) {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 });
 
