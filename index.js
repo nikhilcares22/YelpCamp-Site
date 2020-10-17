@@ -6,12 +6,12 @@ var bodyParser = require('body-parser'),
     flash = require('connect-flash'),
     methodOverride = require('method-override'),
     LocalStrategy = require("passport-local"),
-    port = 3000,
-    Comment = require('./models/comment'),
     User = require('./models/user'),
     seedDB = require('./seeds');
 
 // seedDB(); //seed the database 
+var port = process.env.PORT || 3000;
+var url = process.env.DATABASEURL || 'mongodb://localhost:27017/yelp';
 
 //requiring routes
 var commentRoutes = require('./routes/comments'),
@@ -30,8 +30,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// mongoose.connect('mongodb://localhost:27017/yelp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
-mongoose.connect('mongodb+srv://nikhil:nehminilu@cluster0.udzon.mongodb.net/yelpcamp?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -54,4 +53,7 @@ app.use('/campgrounds/:id/comments', commentRoutes);
 // // app.listen(port, () => {
 // //     console.log(`Server running on port ${port}`)
 // });
-app.listen(process.env.PORT, process.env.IP);
+
+app.listen(port, () => {
+    console.log(`Server running at ${port}`);
+});

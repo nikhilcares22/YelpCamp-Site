@@ -40,6 +40,15 @@ html {
     width: 30%;
 }
 
+#main_head {
+    display: inline-block;
+}
+
+.main_icon {
+    margin-bottom: 1px;
+    margin-right: 0;
+}
+
 .login_signup {
     height: 89.5vh;
     margin-bottom: 0;
