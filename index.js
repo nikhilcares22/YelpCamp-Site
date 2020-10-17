@@ -11,6 +11,7 @@ var bodyParser = require('body-parser'),
 
 // seedDB(); //seed the database 
 var port = process.env.PORT || 3000;
+var url = process.env.DATABASEURL || 'mongodb://localhost:27017/yelp';
 
 //requiring routes
 var commentRoutes = require('./routes/comments'),
@@ -29,7 +30,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
