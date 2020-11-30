@@ -1,116 +1,119 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
 .img-thumbnail img {
-    width: 100%;
-    height: 450px;
+  width: 100%;
+  height: 450px;
 }
 
 .col-md-3 .img-thumbnail img {
-    height: 250px;
+  height: 250px;
 }
 
 .img-thumbnail {
-    padding: 0px;
+  padding: 0px;
 }
 
 .img-thumbnail .card-body,
 .img-thumbnail .text-lg-left {
-    padding: 9px;
+  padding: 9px;
 }
 
 #edit_btn {
-    color: white;
+  color: white;
+}
+.btn {
+  transition: 1s;
 }
 
 .edit_comment {
-    padding: .15rem .3rem;
-    font-size: .850rem;
-    line-height: 1.2;
-    border-radius: .3rem;
+  padding: 0.15rem 0.3rem;
+  font-size: 0.85rem;
+  line-height: 1.2;
+  border-radius: 0.3rem;
 }
 
 .edit_comment:hover {
-    color: black;
+  color: black;
 }
 
 .common_form {
-    margin: 40px auto;
-    width: 30%;
+  margin: 40px auto;
+  width: 30%;
 }
 
 #main_head {
-    display: inline-block;
+  display: inline-block;
 }
 
 .main_icon {
-    margin-bottom: 1px;
-    margin-right: 0;
+  margin-bottom: 1px;
+  margin-right: 0;
 }
 
 .login_signup {
-    height: 89.5vh;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  height: 89.5vh;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 @media only screen and (max-width: 800px) {
-    .common_form {
-        margin: 40px auto;
-        width: 100%;
-    }
-    .common_form .btn {
-        width: 100%;
-        margin-bottom: 5px;
-    }
-    .common_form #login_div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .common_form {
+    margin: 40px auto;
+    width: 100%;
+  }
+  .common_form .btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .common_form #login_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media only screen and (min-width: 800px) {
-    .common_form #login_btn {
-        display: inline;
-        width: 48%;
-    }
-    .common_form #back_btn {
-        margin-left: 17px;
-        display: inline;
-        width: 48%;
-    }
-    .common_form #login_div {
-        display: flex;
-        flex-direction: row;
-    }
-    .common_form input {
-        height: 3.5rem;
-        line-height: 2;
-    }
+  .common_form #login_btn {
+    display: inline;
+    width: 48%;
+  }
+  .common_form #back_btn {
+    margin-left: 17px;
+    display: inline;
+    width: 48%;
+  }
+  .common_form #login_div {
+    display: flex;
+    flex-direction: row;
+  }
+  .common_form input {
+    height: 3.5rem;
+    line-height: 2;
+  }
 }
 
 @media only screen and (max-width: 800px) {
-    .common_form #signup_div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .common_form #signup_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media only screen and (min-width: 800px) {
-    .common_form #signup_btn {
-        display: inline;
-        width: 48%;
-    }
-    .common_form #signup_back_btn {
-        margin-left: 17px;
-        display: inline;
-        width: 48%;
-    }
-    .common_form #signup_div {
-        display: flex;
-        flex-direction: row;
-    }
+  .common_form #signup_btn {
+    display: inline;
+    width: 48%;
+  }
+  .common_form #signup_back_btn {
+    margin-left: 17px;
+    display: inline;
+    width: 48%;
+  }
+  .common_form #signup_div {
+    display: flex;
+    flex-direction: row;
+  }
 }
